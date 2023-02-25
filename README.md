@@ -11,6 +11,9 @@ A Node.js CLI application that will take in information about employees on a sof
     - [Screenshot](#screenshot)
     - [Links](#links)
   - [My process](#my-process)
+    - [Flowchart Diagram](#flowchart-diagram)
+    - [Class Diagram](#class-diagram)
+    - [Sequence Diagram](#sequence-diagram)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
@@ -45,6 +48,177 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+### Flowchart Diagram
+
+```mermaid
+---
+title: Team Profile Generator
+---
+flowchart TB
+    A((start)) --> B[Create new Team]
+    B --> C[/Prompt Team Manager/]
+    C --> D{Input data \nvalidates?}
+    D -->|No| C[/Prompt Team Manager/]
+    D -->|Yes| E[Add new Employee to Team]
+    E --> F[/Prompt Main Menu/]
+    F --> G{Add an Engineer?} & H{Add an Intern?} & I{Finish the Team?}
+    G -->|No| F
+    G -->|Yes| J[/Prompt Engineer/]
+    J --> D
+    H -->|No| F
+    H -->|Yes| K[/Prompt Intern/]
+    K --> D
+    I -->|No| F
+    I -->|Yes| L[Create HTML]
+    L --> M((Finish))
+```
+
+### Class Diagram
+
+```mermaid
+---
+title: Team Profile Generator
+---
+classDiagram
+    AppSingleton <.. ClientConsole
+    AppSingleton "1" <-- "1" EmployeeFactory : contains
+    AppSingleton "1" <-- "1" TeamComposite : contains
+    Team <|-- TeamComposite
+    Team "0..*" <--* "1" TeamComposite
+    Employee <|-- Team
+    Employee "0..*" <--* "1" Team
+    Employee <|-- Manager
+    Employee <|-- Engineer
+    Employee <|-- Intern
+
+    class AppSingleton {
+        -TeamComposite teamsInstance
+        -AppSIngleton():void
+        +getInstance()$:AppSingleton
+
+    }
+    class EmployeeFactory {
+        +createEmployee(String type, Object params)*:Employee
+    }
+    class TeamComposite {
+        -EmployeeFactory factory
+        -List~Team~ teams
+        +getTeams():List~Team~
+        +getTeam(Integer index):Team
+        +addTeam(Team team):void
+        +removeTeam():Team
+        +clearTeams():void
+    }
+    class Team {
+        -List~Employee~ employees
+        +getEmployees():List~Employee~
+        +getEmployee(Integer id):Employee
+        +addEmployee(Employee employee):void
+        +removeEmployee(Integer id):Employee
+        +clearEmployees():void
+    }
+    class Employee {
+        <<abstract>>
+        -String name
+        -Integer id
+        -String email
+        +createEmployee(Object params):Employee
+        +getName():String
+        +getId():Integer
+        +getEmail():String
+        +getRole()*:String
+    }
+    class Manager {
+        -Integer officeNumber
+        +createEmployee(Object params):Employee
+        +getOfficeNumber:Integer
+        +getRole():String ~~override~~
+    }
+    class Engineer {
+        -String github
+        +createEmployee(Object params):Employee
+        +getGithub():String
+        +getRole():String ~~override~~
+    }
+    class Intern {
+        -String school
+        +createEmployee(Object params):Employee
+        +getSchool():String
+        +getRole():String ~~override~~
+    }
+```
+
+### Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    autonumber
+    activate User
+    User->>App:Start
+    activate App
+    App->>Inquirer:prompt Team Manager
+    activate Inquirer
+    loop Name, ID, email, office
+        Inquirer-->>User:request manager data
+        User->>Inquirer:input
+        Inquirer->>Inquirer:Validate input
+        Inquirer-->>User:output result
+    end
+    Inquirer-->>App:Name, ID, email, office
+    deactivate Inquirer
+    App->>Team:create
+    activate Team
+    Team-->>App:<<Team>>
+    App->>Manager:Name,ID,email,office
+    activate Manager
+    Manager-->>App:<<Manager>>
+    deactivate Manager
+    App->>Team:add <<Employee>>
+    deactivate Team
+    App->>Inquirer:prompt Main Menu
+    activate Inquirer
+    loop is not stop prompt
+        Inquirer-->>User:request employee data
+        User->>Inquirer:chosen option
+        alt option is Add an engineer
+            loop name,ID,email,github
+                Inquirer-->>User:request employee data
+                User->>Inquirer:input
+                Inquirer->>Inquirer:Validate input
+                Inquirer-->>User:output result
+                Inquirer-->>App:Name,ID,email,github
+                App->>Engineer:Name,ID,email,github
+                activate Engineer
+                Engineer-->App:<<Engineer>>
+                deactivate Engineer
+            end
+            App->>Inquirer:prompt Main Menu
+        else alt option is Add an Intern
+            loop name,ID,email,school
+                Inquirer-->>User:request employee data
+                User->>Inquirer:input
+                Inquirer->>Inquirer:Validate input
+                Inquirer-->>User:output result
+                Inquirer-->>App:Name,ID,email,school
+                App->>Intern:Name,ID,email,school
+                activate Intern
+                Intern-->>App:<<Intern>>
+                deactivate Intern
+            end
+            App->>Team:add employee <<Intern>>
+            App->>Inquirer:prompt Main Menu
+        else option is Finish building the team
+            Inquirer-->>App: stop prompt
+            deactivate Inquirer
+        end
+    end
+    App->>HTML Generator:generate
+    HTML Generator-->>App:<<DOM>>
+    App-->>User:<<HTML>>
+    deactivate App
+    deactivate User
+```
+
 ### Built with
 
 - Semantic HTML5 markup
@@ -52,9 +226,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Mermaid](https://mermaid.js.org/)
 
 ### What I learned
 
