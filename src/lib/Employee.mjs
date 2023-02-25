@@ -1,4 +1,4 @@
 class Employee {
   constructor() {}
 }
-export default Employee
+export default Employee;

@@ -1,4 +1,4 @@
 class Engineer {
   constructor() {}
 }
-export default Engineer
+export default Engineer;

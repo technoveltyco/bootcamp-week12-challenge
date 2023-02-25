@@ -16,8 +16,8 @@ const generateTeam = (team) => {
             </ul>
         </div>
     </div>
-        `
-  }
+        `;
+  };
 
   // creates the html for engineers
   const generateEngineer = (engineer) => {
@@ -35,8 +35,8 @@ const generateTeam = (team) => {
         </ul>
     </div>
 </div>
-        `
-  }
+        `;
+  };
 
   // creates the html for interns
   const generateIntern = (intern) => {
@@ -54,31 +54,31 @@ const generateTeam = (team) => {
         </ul>
     </div>
 </div>
-        `
-  }
+        `;
+  };
 
-  const html = []
+  const html = [];
 
   html.push(
     team
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => generateManager(manager))
-  )
+  );
   html.push(
     team
       .filter((employee) => employee.getRole() === "Engineer")
       .map((engineer) => generateEngineer(engineer))
       .join("")
-  )
+  );
   html.push(
     team
       .filter((employee) => employee.getRole() === "Intern")
       .map((intern) => generateIntern(intern))
       .join("")
-  )
+  );
 
-  return html.join("")
-}
+  return html.join("");
+};
 
 // exports function to generate entire page
 export default (team) => {
@@ -114,5 +114,5 @@ export default (team) => {
     </div>
 </body>
 </html>
-    `
-}
+    `;
+};

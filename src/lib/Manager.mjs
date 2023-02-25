@@ -2,4 +2,4 @@ class Manager {
   constructor() {}
 }
 
-export default Manager
+export default Manager;

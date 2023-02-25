@@ -1,4 +1,4 @@
 class Intern {
   constructor() {}
 }
-export default Intern
+export default Intern;
