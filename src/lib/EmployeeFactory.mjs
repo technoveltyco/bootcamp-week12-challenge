@@ -19,7 +19,7 @@ class EmployeeFactory {
         instance = Manager.createEmployee(...params);
         break;
       case "engineer":
-        instance = new Engineer(...params);
+        instance = Engineer.createEmployee(...params);
         break;
       case "intern":
         instance = Intern.createEmployee(...params);
