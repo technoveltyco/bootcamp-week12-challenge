@@ -17,5 +17,4 @@ import render from "./src/utils/page-template.mjs";
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 const app = App.getInstance();
-
-console.log(app);
+console.log(app, app.getSettings(), app.getTeams());
