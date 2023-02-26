@@ -28,7 +28,7 @@ class Team {
 
   get(index) {
     let employee = undefined;
-    if (Number.isInteger(index) && index >= this.#employees.length) {
+    if (Number.isInteger(index) && index < this.#employees.length) {
       employee = this.#employees[index];
     }
     return employee;

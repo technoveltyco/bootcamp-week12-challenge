@@ -53,9 +53,7 @@ describe("Team", () => {
   it("should not get a Employee object when the given index position is out of boundary of the array length", () => {
     const inputEmployees = [new Employee(), new Employee(), new Employee()],
       indexOutOfBoundary = inputEmployees.length;
-    const receivedEmployee = new Team(inputEmployees).get(
-      indexOutOfBoundary
-    );
+    const receivedEmployee = new Team(inputEmployees).get(indexOutOfBoundary);
 
     expect(receivedEmployee).not.toBeInstanceOf(Employee);
     expect(receivedEmployee).toBeUndefined();
@@ -64,9 +62,7 @@ describe("Team", () => {
   it("should not get a Employee object when the given index position is not an integer", () => {
     const inputEmployees = [new Employee(), new Employee(), new Employee()],
       noValidIndex = "foo";
-    const receivedEmployee = new Team(inputEmployees).get(
-      noValidIndex
-    );
+    const receivedEmployee = new Team(inputEmployees).get(noValidIndex);
 
     expect(receivedEmployee).not.toBeInstanceOf(Employee);
     expect(receivedEmployee).toBeUndefined();
@@ -82,7 +78,7 @@ describe("Team", () => {
       .get(lastIndex);
 
     expect(receivedEmployee).toBeInstanceOf(Employee);
-    expect(receivedEmployee).toBe(expectedEmployee);
+    expect(receivedEmployee).toStrictEqual(expectedEmployee);
   });
 
   it("should not add a given team which is not a Employee object", () => {
@@ -111,7 +107,7 @@ describe("Team", () => {
   });
 
   it("should not remove a given Employee object that is not in the array", () => {
-    const inputEmployee = Employee(),
+    const inputEmployee = new Employee(),
       initEmployee1 = new Employee(),
       initEmployee2 = new Employee(),
       initEmployees = [initEmployee1, initEmployee2],
@@ -141,10 +137,8 @@ describe("Team", () => {
   it("should set the array empty when called clear()", () => {
     const initEmployees = [new Employee(), new Employee(), new Employee()];
     const expectedEmployees = [];
-    const receivedEmployees = new Team(initEmployees)
-      .clear()
-      .getAll();
+    const receivedEmployees = new Team(initEmployees).clear().getAll();
 
-    expect(receivedEmployees).toBe(expectedEmployees);
+    expect(receivedEmployees).toStrictEqual(expectedEmployees);
   });
 });
