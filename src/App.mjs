@@ -10,7 +10,7 @@ class App {
 
   constructor(composite, settings = {}) {
     if (!App.#isInternalContructing) {
-      throw new TypeError(App.ERROR_SINGLETON_COSTRUCTOR);
+      throw new TypeError(App.ERROR_COSTRUCTOR);
     }
 
     this.#teams = composite;

@@ -64,13 +64,15 @@ describe("App settings", () => {
   });
 
   it("App.getSetting(key) should return the value of given key setting, when the key exists in settings object.", () => {
-    const inputSettings = { foo: "bar" },
-      expectedSettings = inputSettings;
-    const receivedSettings = App.getInstance()
+    const inputKey = "foo",
+      inputValue = "bar",
+      inputSettings = { [inputKey]: inputValue },
+      expectedValue = inputValue;
+    const receivedValue = App.getInstance()
       .setSettings(inputSettings)
-      .getSetting();
+      .getSetting(inputKey);
 
-    expect(receivedSettings).toStrictEqual(expectedSettings);
+    expect(receivedValue).toBe(expectedValue);
   });
 
   it("App.setSetting(key, value) should add key, value pair to the settings object.", () => {
