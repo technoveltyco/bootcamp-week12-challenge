@@ -1,14 +1,11 @@
-import EmployeeFactory from "./EmployeeFactory.mjs";
-
 class Employee {
-  static ROLE_ID = "Employee";
-  #role;
+  _role;
 
   constructor(name = "", id = 0, email = "") {
     this.name = name;
     this.id = id;
     this.email = email;
-    this.#role = Employee.ROLE_ID;
+    this._role = "Employee";
   }
 
   static createEmployee(name, id, email) {
@@ -29,7 +26,7 @@ class Employee {
   }
 
   getRole() {
-    return this.#role;
+    return this._role;
   }
 }
 
