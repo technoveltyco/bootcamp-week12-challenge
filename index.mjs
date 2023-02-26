@@ -1,4 +1,5 @@
 import App from "./src/App.mjs";
+import Team from "./src/lib/Team.mjs";
 import Manager from "./src/lib/Manager.mjs";
 import Engineer from "./src/lib/Engineer.mjs";
 import Intern from "./src/lib/Intern.mjs";
@@ -18,3 +19,18 @@ import render from "./src/utils/page-template.mjs";
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 const app = App.getInstance();
 console.log(app, app.getSettings(), app.getTeams());
+
+const settings = app.getSettings();
+const teamComposite = app.getTeams();
+const teams = [
+  new Team(),
+  new Team(),
+  new Team(),
+  new Team(),
+  new Team(),
+  new Team(),
+];
+console.log(teamComposite.init(teams).getAll());
+for (const team of teamComposite) {
+  console.log(team);
+}
