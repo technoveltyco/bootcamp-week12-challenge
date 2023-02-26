@@ -78,7 +78,7 @@ describe("TeamComposite", () => {
       .get(lastIndex);
 
     expect(receivedTeam).toBeInstanceOf(Team);
-    expect(receivedTeam).toBe(expectedTeam);
+    expect(receivedTeam).toStrictEqual(expectedTeam);
   });
 
   it("should not add a given team which is not a Team object", () => {
@@ -107,7 +107,7 @@ describe("TeamComposite", () => {
   });
 
   it("should not remove a given Team object that is not in the array", () => {
-    const inputTeam = Team(),
+    const inputTeam = new Team(),
       initTeam1 = new Team(),
       initTeam2 = new Team(),
       initTeams = [initTeam1, initTeam2],
@@ -139,6 +139,6 @@ describe("TeamComposite", () => {
     const expectedTeams = [];
     const receivedTeams = new TeamComposite(initTeams).clear().getAll();
 
-    expect(receivedTeams).toBe(expectedTeams);
+    expect(receivedTeams).toStrictEqual(expectedTeams);
   });
 });

@@ -28,7 +28,7 @@ class TeamComposite {
 
   get(index) {
     let team = undefined;
-    if (Number.isInteger(index) && index >= this.#teams.length) {
+    if (Number.isInteger(index) && index < this.#teams.length) {
       team = this.#teams[index];
     }
     return team;
