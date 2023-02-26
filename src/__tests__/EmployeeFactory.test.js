@@ -31,7 +31,7 @@ test('createEmployee("intern", ...) should be instance of Intern', () => {
 test('createEmployee("employee", ...) should be instance of Employee', () => {
   const type = "employee";
   const params = ["Foo", 1, "test@test.com"];
-  const expected = Intern;
+  const expected = Employee;
   const instance = EmployeeFactory.createEmployee(type, ...params);
   expect(instance).toBeInstanceOf(expected);
 });
