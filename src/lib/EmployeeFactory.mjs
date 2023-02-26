@@ -22,7 +22,7 @@ class EmployeeFactory {
         instance = new Engineer(...params);
         break;
       case "intern":
-        instance = new Intern(...params);
+        instance = Intern.createEmployee(...params);
         break;
       case "employee":
       default:
