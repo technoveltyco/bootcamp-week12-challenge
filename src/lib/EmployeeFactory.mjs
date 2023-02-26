@@ -16,7 +16,7 @@ class EmployeeFactory {
     let instance = null;
     switch (type.toLowerCase()) {
       case "manager":
-        instance = new Manager(...params);
+        instance = Manager.createEmployee(...params);
         break;
       case "engineer":
         instance = new Engineer(...params);
