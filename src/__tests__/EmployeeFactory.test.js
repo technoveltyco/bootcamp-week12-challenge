@@ -28,9 +28,17 @@ test('createEmployee("intern", ...) should be instance of Intern', () => {
   expect(instance).toBeInstanceOf(expected);
 });
 
+test('createEmployee("employee", ...) should be instance of Employee', () => {
+  const type = "employee";
+  const params = ["Foo", 1, "test@test.com"];
+  const expected = Intern;
+  const instance = EmployeeFactory.createEmployee(type, ...params);
+  expect(instance).toBeInstanceOf(expected);
+});
+
 test('createEmployee("foo", ...) should be instance of Employee', () => {
   const type = "foo";
-  const params = ["Foo", 1, "test@test.com", "GitHubUser"];
+  const params = ["Foo", 1, "test@test.com", "GitHubUser", "anotherparam"];
   const expected = Employee;
   const instance = EmployeeFactory.createEmployee(type, ...params);
   expect(instance).toBeInstanceOf(expected);

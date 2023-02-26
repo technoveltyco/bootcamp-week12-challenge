@@ -24,8 +24,9 @@ class EmployeeFactory {
       case "intern":
         instance = new Intern(...params);
         break;
-      default: // employee
-        instance = new Employee(...params);
+      case "employee":
+      default:
+        instance = Employee.createEmployee(...params);
         break;
     }
     return instance;
