@@ -2,13 +2,15 @@
   "name": "team-profile-generator",
   "version": "1.0.0",
   "description": "A Node.js CLI application that will take in information about employees on a software engineering team",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "directories": {
     "doc": "docs",
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest"
+    "start": "node index.mjs",
+    "test": "node --experimental-vm-modules --trace-warnings node_modules/jest/bin/jest.js --verbose"
   },
   "repository": {
     "type": "git",
@@ -28,9 +30,15 @@
   },
   "homepage": "https://github.com/technoveltyco/bootcamp-week12-challenge#readme",
   "dependencies": {
+    "archiver": "^5.3.1",
     "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
+    "chalk-pipe": "^6.0.0",
+    "chalk-template": "^0.5.0",
+    "gradient-string": "^2.0.2",
     "inquirer": "^9.1.4",
     "mermaid": "^10.0.0",
+    "terminal-link": "^3.0.0",
     "the-new-css-reset": "^1.8.4"
   },
   "devDependencies": {
