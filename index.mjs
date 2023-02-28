@@ -182,7 +182,7 @@ async function init() {
               github
             );
             team.add(engineer);
-            console.log(engineer);
+            cli.print(cli.success("✔️ Engineer created!"));
           }
           break;
         // Add an Intern
@@ -198,7 +198,7 @@ async function init() {
             const { name, id, email, school } = internData;
             const intern = createEmployee("intern", name, id, email, school);
             team.add(intern);
-            console.log(intern);
+            cli.print(cli.success("✔️ Intern created!"));
           }
           break;
         // Finish building the Team
@@ -220,9 +220,10 @@ async function init() {
       // Notify to user of HTML an Zip filepaths.
       cli.print(
         cli.success(
-          "Thanks for using our tool 🙏!. Your files are ready at:" +
+          "✅ Your files are ready at:" +
             `\n 📂 HTML format: ${htmlFilePath}` +
-            `\n 📂 ZIP format: ${zipFilePath}`
+            `\n 📂 ZIP format: ${zipFilePath}` +
+            "\nThanks for using our tool 🙏!."
         )
       );
       generated = true;
