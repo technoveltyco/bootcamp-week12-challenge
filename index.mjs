@@ -20,12 +20,6 @@ import {
 } from "./src/utils/file-utils.mjs";
 
 /**
- * @type {boolean}
- *    The generated flag.
- */
-let generated = false;
-
-/**
  * @type {Array}
  *    The allowed employee types.
  */
@@ -225,27 +219,9 @@ async function init() {
           `\n 📂 ${cli.label("ZIP format:")} ${zipFilePath}` +
           cli.success("\n\n🙏 Thanks for using our tool!.")
       );
-      generated = true;
     }
   } catch (error) {
     cli.printError(`❌ ${error}`);
-    generated = false;
-  } finally {
-    if (!generated) {
-      const answer = await inquirer.prompt([
-        {
-          type: "confirm",
-          name: "tryAgain",
-          message: cli.warning(
-            " ⚠️ It seems you could not have your report. Do you want to give another try?"
-          ),
-          default: false,
-        },
-      ]);
-      if (answer.tryAgain) {
-        init();
-      }
-    }
   }
 }
 
