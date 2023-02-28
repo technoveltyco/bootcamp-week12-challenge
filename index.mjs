@@ -199,7 +199,7 @@ async function init() {
           );
           if (internData) {
             const { name, id, email, school } = internData;
-            addEmployeeIntoTeam("intern", name, id, email, school);
+            addEmployeeIntoTeam(team, "intern", name, id, email, school);
           }
           break;
         // Finish building the Team
