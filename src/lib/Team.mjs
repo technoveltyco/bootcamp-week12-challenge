@@ -20,6 +20,7 @@ class Team {
    *
    * @param {Array} employees
    *    A employees container to initialise with.
+   * @constructor
    */
   constructor(employees = []) {
     this.init(employees);
@@ -32,6 +33,7 @@ class Team {
    *    A employees container to initialise.
    * @returns {this}
    *    this reference.
+   * @public
    */
   init(employees) {
     this.#employees = [];
@@ -53,6 +55,7 @@ class Team {
    *
    * @returns {Array}
    *    The employees container.
+   * @public
    */
   getAll() {
     return this.#employees;
@@ -65,6 +68,7 @@ class Team {
    *    The index in the employees array.
    * @returns {Employee}
    *    The correspondent Employee object.
+   * @public
    */
   get(index) {
     let employee = undefined;
@@ -81,6 +85,7 @@ class Team {
    *    A team object to add.
    * @returns {this}
    *    this reference.
+   * @public
    */
   add(employee) {
     if (employee instanceof Employee) {
@@ -96,6 +101,7 @@ class Team {
    *    An Employee object to remove.
    * @returns {this}
    *    this reference.
+   * @public
    */
   remove(employee) {
     if (employee instanceof Employee) {
@@ -111,6 +117,7 @@ class Team {
    *
    * @returns {this}
    *    this reference.
+   * @public
    */
   clear() {
     this.#employees = [];
@@ -122,6 +129,7 @@ class Team {
    *
    * @returns {{done: boolean, value?: Team}}
    *    An object to be used by Symbol.iterator API.
+   * @public
    */
   [Symbol.iterator]() {
     let [current, end, employees] = [

@@ -40,6 +40,7 @@ class App {
   #settings;
 
   /**
+   * @private
    * @type {TeamComposite}
    *    The composite container of Team objects.
    */
@@ -52,6 +53,7 @@ class App {
    *    The composite container.
    * @param {Object} settings
    *    The settings container.
+   * @constructor
    */
   constructor(composite, settings = {}) {
     if (!App.#isInternalContructing) {
@@ -69,6 +71,8 @@ class App {
    *
    * @returns {App}
    *    The application instance.
+   * @static
+   * @public
    */
   static getInstance() {
     if (!App.#instance) {
@@ -86,6 +90,7 @@ class App {
    *
    * @returns {Object}
    *    An object wit key,value pairs of the application settings.
+   * @public
    */
   getSettings() {
     return this.#settings;
@@ -100,6 +105,7 @@ class App {
    *    The default value to return when the key is not found.
    * @returns {any}
    *    The setting value, or default.
+   * @public
    */
   getSetting(key, defaultValue = false) {
     return this.#settings[key] || defaultValue;
@@ -112,6 +118,7 @@ class App {
    *    The settings container.
    * @returns {this}
    *    This instance.
+   * @public
    */
   setSettings(settings) {
     this.#settings = settings;
@@ -127,6 +134,7 @@ class App {
    *    The value.
    * @returns {this}
    *    This instance.
+   * @public
    */
   setSetting(key, value) {
     this.#settings[key] = value;
@@ -138,6 +146,7 @@ class App {
    *
    * @returns {TeamComposite}
    *    The composite container of Team objects.
+   * @public
    */
   getTeams() {
     return this.#teams;

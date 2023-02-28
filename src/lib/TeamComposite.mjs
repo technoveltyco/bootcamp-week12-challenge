@@ -20,6 +20,7 @@ class TeamComposite {
    *
    * @param {Array} teams
    *    A teams container to initialise with.
+   * @constructor
    */
   constructor(teams = []) {
     this.init(teams);
@@ -32,6 +33,7 @@ class TeamComposite {
    *    A teams container to initialise.
    * @returns {this}
    *    this reference.
+   * @public
    */
   init(teams) {
     this.#teams = [];
@@ -53,6 +55,7 @@ class TeamComposite {
    *
    * @returns {Array}
    *    The teams composite container.
+   * @public
    */
   getAll() {
     return this.#teams;
@@ -65,6 +68,7 @@ class TeamComposite {
    *    The index in the teams array.
    * @returns {Team}
    *    The correspondent Team object.
+   * @public
    */
   get(index) {
     let team = undefined;
@@ -81,6 +85,7 @@ class TeamComposite {
    *    A team object to add.
    * @returns {this}
    *    this reference.
+   * @public
    */
   add(team) {
     if (team instanceof Team) {
@@ -96,6 +101,7 @@ class TeamComposite {
    *    A Team object to remove.
    * @returns {this}
    *    this reference.
+   * @public
    */
   remove(team) {
     if (team instanceof Team) {
@@ -109,6 +115,7 @@ class TeamComposite {
    *
    * @returns {this}
    *    this reference.
+   * @public
    */
   clear() {
     this.#teams = [];
@@ -120,6 +127,7 @@ class TeamComposite {
    *
    * @returns {{done: boolean, value?: Team}}
    *    An object to be used by Symbol.iterator API.
+   * @public
    */
   [Symbol.iterator]() {
     let [current, end, teams] = [0, this.#teams.length, this.#teams];

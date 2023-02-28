@@ -3,14 +3,24 @@ import Engineer from "./Engineer.mjs";
 import Intern from "./Intern.mjs";
 import Employee from "./Employee.mjs";
 
+/**
+ * The EmployeeFactory class.
+ *
+ * @class
+ * @classdesc this class is abstract factory pattern to create Employee classes.
+ */
 class EmployeeFactory {
   /**
    * Create an instance of the employee given type.
    *
    * @param {String} type
+   *    The type of employee.
    * @param  {...any} params
+   *    The data parameters to initialise the employee.
    * @returns {Employee}
-   *    A Employee object.
+   *    An Employee object.
+   * @public
+   * @static
    */
   static createEmployee(type, ...params) {
     let instance = null;
