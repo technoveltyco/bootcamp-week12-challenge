@@ -3,7 +3,7 @@
 ///
 
 import path from "path";
-import { fileURLToPath } from "url";
+// import { fileURLToPath } from "url";
 import { existsSync, mkdirSync, createReadStream, createWriteStream } from "fs";
 import archiver from "archiver";
 
@@ -11,7 +11,8 @@ const timestamp = Date.now();
 const outputFolder = "output";
 const outputFilename = "team.html";
 const outputFilenameCompress = `team-${timestamp}.zip`;
-const __filename = fileURLToPath(import.meta.url);
+// const __filename = fileURLToPath(import.meta.url);
+const __filename = path.resolve(process.cwd(), "index.mjs");
 const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.resolve(__dirname, outputFolder);
 const outputPath = path.join(OUTPUT_DIR, outputFilename);
