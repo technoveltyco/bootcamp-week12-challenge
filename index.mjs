@@ -219,12 +219,10 @@ async function init() {
 
       // Notify to user of HTML an Zip filepaths.
       cli.print(
-        cli.success(
-          "✅ Your files are ready at:" +
-            `\n 📂 HTML format: ${htmlFilePath}` +
-            `\n 📂 ZIP format: ${zipFilePath}` +
-            "\nThanks for using our tool 🙏!."
-        )
+        cli.success("✅ Your files are ready at:") +
+          `\n 📂 ${cli.label("HTML format:")} ${htmlFilePath}` +
+          `\n 📂 ${cli.label("ZIP format:")} ${zipFilePath}` +
+          cli.success("\n\nThanks for using our tool 🙏!.")
       );
       generated = true;
     }

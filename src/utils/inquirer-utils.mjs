@@ -487,7 +487,7 @@ const menuQuestions = [
   {
     type: "rawlist",
     name: "choice",
-    message: em("Choose one option:"),
+    message: em("Please choose an option:"),
     choices: Object.values(menu)
       .filter((option) => option !== "Team Manager")
       .map((option) => {
