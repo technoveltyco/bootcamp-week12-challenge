@@ -360,7 +360,7 @@ const questions = {
     ...employeeQuestions,
     // ... and Office Number.
     {
-      type: "number",
+      type: "input",
       name: "officeNumber",
       message: label("Office Number 🏢:"),
       validate: function (input) {
