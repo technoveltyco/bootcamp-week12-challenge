@@ -141,7 +141,7 @@ async function init() {
     }
 
     // Save Team Manager.
-    const { name, id, email } = managerData;
+    const { name, id, email, officeNumber } = managerData;
 
     ///
     // Different ways to initialise employees.
@@ -152,7 +152,7 @@ async function init() {
     // const manager = Manager.createEmployee(...managerData);
     // - With EmployeeFactory abstract method:
     // const manager = EmployeeFactory.createEmployee("manager", managerData);
-    const manager = createEmployee("manager", name, id, email);
+    const manager = createEmployee("manager", name, id, email, officeNumber);
     if (manager instanceof Employee) {
       team.add(manager);
       cli.print(cli.success("✔️ Team Manager created!"));
