@@ -7,10 +7,35 @@ import chalkPipe from "chalk-pipe";
 import terminalLink from "terminal-link";
 
 /**
- * Access the
+ * Instance of inquirer bottom bar ui.
+ *
  * @type {inquirer.ui.BottomBar}
  */
-const bottomBar = new inquirer.ui.BottomBar();
+const ui = new inquirer.ui.BottomBar();
+
+/**
+ * Print to the inquirer bottom bar.
+ *
+ * @param {String} message
+ *    The message to notify.
+ */
+const notify = (message) => {
+  ui.updateBottomBar(highlight(message));
+};
+
+/**
+ * Delay the execution.
+ *
+ * @param {Number} seconds
+ *    Number of seconds to delay.
+ */
+const sleep = (seconds) => {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < seconds * 1000);
+};
 
 /**
  * Clear the screen.
@@ -219,6 +244,9 @@ const warning = chalkPipe("orange.bold");
 const error = chalkPipe("bgRed.#cccccc");
 
 export {
+  ui,
+  notify,
+  sleep,
   clear,
   print,
   printInfo,
@@ -247,5 +275,4 @@ export {
   info,
   warning,
   error,
-  bottomBar,
 };
