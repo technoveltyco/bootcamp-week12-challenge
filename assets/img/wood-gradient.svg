@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+  <defs>
+    <linearGradient id="redgradient">
+      <stop offset="0" stop-color="#722b36" />
+      <stop offset="0.362" stop-color="#973948" />
+      <stop offset="1" stop-color="#894514" />
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path
+      d="M0,0 L50,0 L50,50 L0,50 L0,0 z"
+      fill="url(#redgradient)"
+      width="100%"
+      height="100%"
+    />
+  </g>
+</svg>
