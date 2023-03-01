@@ -11,10 +11,10 @@
   --c4: hsl(0, 100%, 99%); /* snow */
 
   /* backgrounds with textures and gradients */
-  --bg-brick: var(--c1) url(/assets/img/brick-wall-pattern.svg);
-  --bg-thin-stripes: var(--c2) url(/assets/img/thin-tripes-texture.svg);
-  --bg-wood: var(--c4) url(/assets/img/wood-veneer.jpg);
-  --bg-wood-gr: url(/assets/img/wood-gradient.svg) 10% stretch;
+  --bg-brick: var(--c1) url(../img/brick-wall-pattern.svg);
+  --bg-thin-stripes: var(--c2) url(../img/thin-tripes-texture.svg);
+  --bg-wood: var(--c4) url(../img/wood-veneer.jpg);
+  --bg-wood-gr: url(../img/wood-gradient.svg) 10% stretch;
   --bg-gr1: linear-gradient(to right, var(--c3-s1) 35%, var(--c3) 100%);
 
   /* shadows */
