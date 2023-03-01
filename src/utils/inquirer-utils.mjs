@@ -360,7 +360,7 @@ const questions = {
     ...employeeQuestions,
     // ... and Office Number.
     {
-      type: "number",
+      type: "input",
       name: "officeNumber",
       message: label("Office Number 🏢:"),
       validate: function (input) {
@@ -487,7 +487,7 @@ const menuQuestions = [
   {
     type: "rawlist",
     name: "choice",
-    message: em("Choose one option:"),
+    message: em("Please choose an option:"),
     choices: Object.values(menu)
       .filter((option) => option !== "Team Manager")
       .map((option) => {

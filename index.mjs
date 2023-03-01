@@ -20,16 +20,10 @@ import {
 } from "./src/utils/file-utils.mjs";
 
 /**
- * @type {boolean}
- *    The generated flag.
- */
-let generated = false;
-
-/**
  * @type {Array}
  *    The allowed employee types.
  */
-const employeesTypes = ["manager", "engineer", "intern"];
+const employeesTypes = Object.keys(menu).filter((type) => type !== "finish");
 
 /**
  * Prompt the main menu options.
@@ -71,7 +65,19 @@ function promptEmployeeQuestions(questions, employee = "Employee") {
 
   return inquirer
     .prompt(questions)
-    .then((answers) => answers)
+    .then((answers) => {
+      if (!answers) {
+        const noAnswersError = `❌ Sorry I could not fetch the details for the ${employee}.`;
+        if (employee === "Team Manager") {
+          // Fatal error
+          throw new Error(noAnswersError);
+        } else {
+          // Recoverable error.
+          cli.notify(noAnswersError);
+        }
+      }
+      return answers;
+    })
     .catch((error) => {
       if (error.isTtyError) {
         // Prompt couldn't be rendered in the current environment
@@ -86,17 +92,17 @@ function promptEmployeeQuestions(questions, employee = "Employee") {
 }
 
 /**
- * Creates an employee if parameters are validated.
+ * Creates an employee if parameters are validated, and add it to the team.
  * It uses the Employee factory method to create the object.
  *
+ * @param {Team} team
+ *    The team where the employee is added.
  * @param {String} type
  *    The employee type [manager|engineer|intern]
  * @param {Array} data
  *    The data parameters.
- * @returns {Manager|Engineer|Intern|TypeError}
- *    The allowed employee object, or TypeError otherwise.
  */
-function createEmployee(type, ...data) {
+function addEmployeeIntoTeam(team, type, ...data) {
   if (!employeesTypes.includes(type)) {
     throw new TypeError(
       `${type} is not a valid employee type. Allowed: ${employeesTypes}.`
@@ -109,7 +115,25 @@ function createEmployee(type, ...data) {
     );
   }
 
-  return EmployeeFactory.createEmployee(type, ...data);
+  ///
+  // Examples of different ways to initialise employees/manager/engineer/intern.
+  // ------------------------------------------------------------------------------
+  // - With constructor:
+  // const employee = new Employee(...data);
+  // - With factory method:
+  // const employee = Employee.createEmployee(...data);
+  // - With abstract method: (the one used here)
+  // const employee = EmployeeFactory.createEmployee("manager", ...data);
+  const employee = EmployeeFactory.createEmployee(type, ...data);
+  if (employee instanceof Employee) {
+    team.add(employee);
+    cli.notify(`✔️ ${menu[type]} added to the Team!`);
+  } else {
+    cli.notify(`⚠️ Sorry ${menu[type]} could not be created :-(`);
+  }
+
+  // Delay 2 seconds
+  cli.sleep(2);
 }
 
 /**
@@ -136,27 +160,9 @@ async function init() {
       menu.manager
     );
 
-    if (!managerData) {
-      throw new Error("No Team Manager data gathered.");
-    }
-
     // Save Team Manager.
-    const { name, id, email } = managerData;
-
-    ///
-    // Different ways to initialise employees.
-    // ----------------------------------------
-    // - With Manager constructor:
-    // const manager = new Manager(...managerData);
-    // - With Manager factory method:
-    // const manager = Manager.createEmployee(...managerData);
-    // - With EmployeeFactory abstract method:
-    // const manager = EmployeeFactory.createEmployee("manager", managerData);
-    const manager = createEmployee("manager", name, id, email);
-    if (manager instanceof Employee) {
-      team.add(manager);
-      cli.print(cli.success("✔️ Team Manager created!"));
-    }
+    const { name, id, email, officeNumber } = managerData;
+    addEmployeeIntoTeam(team, "manager", name, id, email, officeNumber);
 
     let option = 0;
     while (option < 3) {
@@ -174,15 +180,7 @@ async function init() {
           );
           if (engineerData) {
             const { name, id, email, github } = engineerData;
-            const engineer = createEmployee(
-              "engineer",
-              name,
-              id,
-              email,
-              github
-            );
-            team.add(engineer);
-            console.log(engineer);
+            addEmployeeIntoTeam(team, "engineer", name, id, email, github);
           }
           break;
         // Add an Intern
@@ -193,12 +191,9 @@ async function init() {
             questions.intern,
             menu.intern
           );
-
           if (internData) {
             const { name, id, email, school } = internData;
-            const intern = createEmployee("intern", name, id, email, school);
-            team.add(intern);
-            console.log(intern);
+            addEmployeeIntoTeam(team, "intern", name, id, email, school);
           }
           break;
         // Finish building the Team
@@ -219,33 +214,14 @@ async function init() {
 
       // Notify to user of HTML an Zip filepaths.
       cli.print(
-        cli.success(
-          "Thanks for using our tool 🙏!. Your files are ready at:" +
-            `\n 📂 HTML format: ${htmlFilePath}` +
-            `\n 📂 ZIP format: ${zipFilePath}`
-        )
+        cli.success("✔️ Your files are ready at:") +
+          `\n 📂 ${cli.label("HTML format:")} ${htmlFilePath}` +
+          `\n 📂 ${cli.label("ZIP format:")} ${zipFilePath}` +
+          cli.success("\n\n🙏 Thanks for using our tool!.")
       );
-      generated = true;
     }
   } catch (error) {
-    cli.printError(error);
-    generated = false;
-  } finally {
-    if (!generated) {
-      const answer = await inquirer.prompt([
-        {
-          type: "confirm",
-          name: "tryAgain",
-          message: cli.warning(
-            "It seems you could not have your report. Do you want to give another try?"
-          ),
-          default: false,
-        },
-      ]);
-      if (answer.tryAgain) {
-        init();
-      }
-    }
+    cli.printError(`❌ ${error}`);
   }
 }
 

@@ -1,0 +1,142 @@
+/**
+ * Team Profile Generator style.
+ */
+
+:root {
+  /* colours and shades */
+  --c1: hsl(0, 43%, 54%);
+  --c2: hsl(90, 43%, 54%);
+  --c3: hsl(180, 43%, 54%);
+  --c3-s1: hsl(180, 43%, 44%);
+  --c4: hsl(0, 100%, 99%); /* snow */
+
+  /* backgrounds with textures and gradients */
+  --bg-brick: var(--c1) url(/assets/img/brick-wall-pattern.svg);
+  --bg-thin-stripes: var(--c2) url(/assets/img/thin-tripes-texture.svg);
+  --bg-wood: var(--c4) url(/assets/img/wood-veneer.jpg);
+  --bg-wood-gr: url(/assets/img/wood-gradient.svg) 10% stretch;
+  --bg-gr1: linear-gradient(to right, var(--c3-s1) 35%, var(--c3) 100%);
+
+  /* shadows */
+  --sh1: 0 1px 0 #999999, 0 2px 0 #888888, 0 3px 0 #777777, 0 4px 0 #666666,
+    0 5px 0 #555555, 0 6px 0 #444444, 0 7px 0 #333333,
+    0 8px 7px rgba(0, 0, 0, 0.4), 0 9px 10px rgba(0, 0, 0, 0.2);
+  --sh2: 3px 3px 3px hsl(0, 0%, 20%);
+  --sh3: 0 20px 40px hsla(0, 0%, 0%, 0.2);
+  --sh4: 1px 2px 1px -1px #777;
+  --sh5: 0 15px 10px #777;
+
+  /* font size */
+  --fs1: 1.65rem;
+  --fs2: 1.33rem;
+  --fs3: 1rem;
+}
+
+/* small screens first */
+@media screen {
+  body {
+    min-height: 100vh;
+    background: var(--bg-brick);
+  }
+
+  .team-heading {
+    background: var(--bg-thin-stripes);
+    color: var(--c4);
+    text-shadow: var(--sh2);
+  }
+
+  .team-area {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    background: var(--bg-wood);
+    text-align: center;
+    border: 10px solid var(--c4);
+    border-radius: 5px;
+    border-image: var(--bg-wood-gr);
+    box-shadow: var(--sh3);
+  }
+
+  .employee-card {
+    margin: 50px 30px;
+    background: var(--bg-gr1);
+    box-shadow: var(--sh4);
+    transition: background 200ms ease-in-out;
+  }
+
+  .employee-card:before {
+    box-shadow: var(--sh5);
+    transform: rotate(4deg);
+    transition: all 150ms ease-in-out;
+  }
+
+  .employee-card:hover {
+    background: var(--bg-gr1);
+  }
+
+  .employee-card .card-header {
+    text-shadow: var(--sh1);
+  }
+
+  .employee-card .card-header .card-title {
+    font-size: var(--fs1);
+    color: var(--c4);
+  }
+
+  .employee-card .list-group .list-group-item {
+    font-weight: 600;
+    background-color: var(--c4);
+    box-shadow: var(--sh1);
+  }
+}
+
+/* laptop, desktop and large screen */
+@media screen and (min-width: 992px) {
+  .team-area {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* printer friendly styles */
+@media print {
+  @page {
+    size: landscape;
+    margin: 5mm;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  .team-heading {
+    padding: 1rem;
+  }
+
+  .team-heading h1 {
+    font-size: var(--fs2);
+  }
+
+  .team-area {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .employee-card {
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .employee-card .card-header {
+    padding: 0.25em;
+  }
+
+  .employee-card .card-header .card-title {
+    font-size: var(--fs3);
+  }
+
+  .employee-card .card-body {
+    font-weight: 600;
+    padding: 0;
+  }
+}

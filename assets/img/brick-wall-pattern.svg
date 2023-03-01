@@ -1,0 +1,56 @@
+<svg
+  id="brick-wall"
+  width="100%"
+  height="100%"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <filter id="inset-shadow">
+      <!-- Shadow offset -->
+      <feOffset dx="0" dy="0" />
+      <!-- Shadow blur -->
+      <feGaussianBlur stdDeviation="1" result="offset-blur" />
+      <!-- Invert drop shadow to make an inset shadow-->
+      <feComposite
+        operator="out"
+        in="SourceGraphic"
+        in2="offset-blur"
+        result="inverse"
+      />
+      <!-- Cut colour inside shadow -->
+      <feFlood flood-color="hsl(0, 43%, 34%)" flood-opacity=".95" result="color" />
+      <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+      <!-- Placing shadow over element -->
+      <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+    </filter>
+    <pattern
+      id="brick-pattern"
+      patternUnits="userSpaceOnUse"
+      width="30"
+      height="30"
+      patternTransform="scale(2) rotate(0)"
+    >
+      <rect
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        fill="hsla(0, 43%, 54%, 1)"
+      />
+      <path
+        d="M0 22.5h30v15H0zm15-15h30v15H15m-30-15h30v15h-30zm15-15h30v15H0z"
+        stroke-width="1"
+        stroke="hsla(0, 100%, 99%, 1)"
+        fill="none"
+        filter="url(#inset-shadow)"
+      />
+    </pattern>
+  </defs>
+  <rect
+    id="wall"
+    width="800%"
+    height="800%"
+    transform="translate(0,0)"
+    fill="url(#brick-pattern)"
+  />
+</svg>
