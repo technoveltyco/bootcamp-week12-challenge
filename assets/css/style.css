@@ -48,6 +48,7 @@
   .team-area {
     display: flex;
     flex-direction: column;
+    margin: 50px 0;
     background: var(--bg-wood);
     text-align: center;
     border: 10px solid var(--c4);
@@ -93,6 +94,7 @@
 @media screen and (min-width: 992px) {
   .team-area {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -115,8 +117,14 @@
     font-size: var(--fs2);
   }
 
+  .team-area {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .employee-card {
     text-align: center;
+    margin: 5px 0;
   }
 
   .employee-card .card-header {
