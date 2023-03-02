@@ -60,8 +60,10 @@ Your task is to take the given starter code and convert it into a working Node.j
 Your application should use JestLinks to an external site. for running unit tests and InquirerLinks to an external site. for collecting input from the user. The application will be invoked by using the following command:
 
 ```node
-node index.js
+node index.mjs
 ```
+
+> 👆 Please note the `index.mjs` extension above. This is because the project has been developed using **ES6 modules** and no **CommonJS** syntax.
 
 ### Walkthough & Screenshots
 
@@ -404,7 +406,13 @@ const proudOfThisFunc = () => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+The following tickets has been created for future development:
+
+- Bug fixes & Improvements
+- Functional tests for the document generation.
+- Remote Terminal & Security implications
+- Landing page
+- Docs page
 
 ### Useful resources
 
@@ -420,4 +428,4 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+The teacher and TAs that help us with resources and support to my questions during the development of this project.
