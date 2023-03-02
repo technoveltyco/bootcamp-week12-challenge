@@ -122,7 +122,7 @@ function addEmployeeIntoTeam(team, type, ...data) {
   // const employee = new Employee(...data);
   // - With factory method:
   // const employee = Employee.createEmployee(...data);
-  // - With abstract method: (the one used here)
+  // - With abstract factory method: (the one used here)
   // const employee = EmployeeFactory.createEmployee("manager", ...data);
   const employee = EmployeeFactory.createEmployee(type, ...data);
   if (employee instanceof Employee) {

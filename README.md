@@ -8,14 +8,18 @@ A Node.js CLI application that will take in information about employees on a sof
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
-    - [Screenshot](#screenshot)
+    - [Walkthough \& Screenshots](#walkthough--screenshots)
     - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
-    - [Terminal Text Art Intro](#terminal-text-art-intro)
-    - [Flowchart Diagram](#flowchart-diagram)
+    - [Flowchart Diagram (Simplified)](#flowchart-diagram-simplified)
     - [Class Diagram](#class-diagram)
     - [Sequence Diagram](#sequence-diagram)
+    - [UX/UI Design](#uxui-design)
+      - [Terminal Theming](#terminal-theming)
+        - [Terminal Text Art Intro](#terminal-text-art-intro)
+      - [Team Profile Page](#team-profile-page)
+    - [Test Coverage](#test-coverage)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
@@ -24,14 +28,25 @@ A Node.js CLI application that will take in information about employees on a sof
 
 ## Overview
 
+In this Challenge, you'll create an application that generates HTML files using input from a command-line interface.
+
 ### The challenge
 
-Describe the challenge here
+Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generate an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
 
-### Screenshot
+### Walkthough & Screenshots
 
-![The terminal intro screen of Team Profile Generator](./docs/assets/img/Terminal-Intro-Screenshot%202023-02-26%20211435.png)
+![Walkthrough video of Team Profile Generator]()
 
+_Click on each screenshot to take you to the Walkthrough video, a Team Profile's live example, and an example in PDF version._
+
+[![The terminal intro screen of Team Profile Generator (not implemented yet)](./docs/assets/img/Terminal-Intro-Screenshot%202023-02-26%20211435.png)]()
+
+[![Example of a generated Team Profile webpage on large screens](./docs/assets/img/Screenshot%202023-03-02%20at%2011-24-22%20My%20Team.png)](https://technoveltyco.github.io/bootcamp-week12-challenge/)
+
+[![Example of a generated Team Profile webpage on small screens](./docs/assets/img/Screenshot%202023-03-02%20113146.png)
+
+[![Example of a printer-friendly version of the Team Profile webpage](./docs/assets/img/Screenshot%202023-03-02%20112554.png)](https://technoveltyco.github.io/bootcamp-week12-challenge/output/My%20Team.pdf)
 
 ### Links
 
@@ -41,63 +56,24 @@ Describe the challenge here
 
 ## My process
 
+I started designing the structure of the program by creating a [Flowchart Diagram](#flowchart-diagram-simplified), [Class Diagram](#class-diagram) and [Sequence Diagram](#sequence-diagram) to have a clearer idea of logic structure, modules and reference for automated tests coverage. FInally, I went through ideas and investigation to the [UX/UI Design](#uxui-design) starting from the terminal theming, and following with the webpage design for visualisation in screens and printer-friendly version.
+
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- [CSS custom properties](https://github.com/technoveltyco/bootcamp-week12-challenge/blob/main/assets/css/style.css)
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
+- [Mobile-first workflow](https://github.com/technoveltyco/bootcamp-week12-challenge/blob/main/assets/css/style.css#L36)
+- [Boostrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+- [Node.js](https://nodejs.org/en/)
+  - [Archiver](https://www.npmjs.com/package/archiver)
+  - [Chalk](https://www.npmjs.com/package/chalk)
+  - [Inquirer](https://www.npmjs.com/package/inquirer)
+  - [Jest.js](https://jestjs.io/)
 - [Mermaid](https://mermaid.js.org/)
 
-### Terminal Text Art Intro
-
-```text
- ███████████                                       ███████████                        ██████   ███  ████                █████████                                                    █████                      
-░█░░░███░░░█                                      ░░███░░░░░███                      ███░░███ ░░░  ░░███               ███░░░░░███                                                  ░░███                       
-░   ░███  ░   ██████   ██████   █████████████      ░███    ░███ ████████   ██████   ░███ ░░░  ████  ░███   ██████     ███     ░░░   ██████  ████████    ██████  ████████   ██████   ███████    ██████  ████████ 
-    ░███     ███░░███ ░░░░░███ ░░███░░███░░███     ░██████████ ░░███░░███ ███░░███ ███████   ░░███  ░███  ███░░███   ░███          ███░░███░░███░░███  ███░░███░░███░░███ ░░░░░███ ░░░███░    ███░░███░░███░░███
-    ░███    ░███████   ███████  ░███ ░███ ░███     ░███░░░░░░   ░███ ░░░ ░███ ░███░░░███░     ░███  ░███ ░███████    ░███    █████░███████  ░███ ░███ ░███████  ░███ ░░░   ███████   ░███    ░███ ░███ ░███ ░░░ 
-    ░███    ░███░░░   ███░░███  ░███ ░███ ░███     ░███         ░███     ░███ ░███  ░███      ░███  ░███ ░███░░░     ░░███  ░░███ ░███░░░   ░███ ░███ ░███░░░   ░███      ███░░███   ░███ ███░███ ░███ ░███     
-    █████   ░░██████ ░░████████ █████░███ █████    █████        █████    ░░██████   █████     █████ █████░░██████     ░░█████████ ░░██████  ████ █████░░██████  █████    ░░████████  ░░█████ ░░██████  █████    
-   ░░░░░     ░░░░░░   ░░░░░░░░ ░░░░░ ░░░ ░░░░░    ░░░░░        ░░░░░      ░░░░░░   ░░░░░     ░░░░░ ░░░░░  ░░░░░░       ░░░░░░░░░   ░░░░░░  ░░░░ ░░░░░  ░░░░░░  ░░░░░      ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░     
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                
-              ,  ,                                                           █████                
-             / \/ \,'| _                                                    ░░███                
-            ,'    '  ,' |,|                                                  ░███████  █████ ████
-           ,'           ' |,'|                                               ░███░░███░░███ ░███ 
-          ,'                 ;'| _                                           ░███ ░███ ░███ ░███ 
-         ,'                    '' |                                          ░███ ░███ ░███ ░███ 
-        ,'                        ;-,                                        ████████  ░░███████ 
-       (___                        /                                        ░░░░░░░░    ░░░░░███ 
-     ,'    `.  ___               ,'                                                     ███ ░███ 
-    :       ,`'   `-.           /                                                      ░░██████  
-    |-._ o /         \         /                                                        ░░░░░░   
-   (    `-(           )       /
-  ,'`.     \      o  /      ,'
- /    `     `.     ,'      /
-(             `"""'       /              ███████████                   █████                                               ████   █████               
- `._                     /              ░█░░░███░░░█                  ░░███                                               ░░███  ░░███                
-    `--.______        '"`.              ░   ░███  ░   ██████   ██████  ░███████   ████████    ██████  █████ █████  ██████  ░███  ███████   █████ ████ 
-       \__,__,`---._   '`;                  ░███     ███░░███ ███░░███ ░███░░███ ░░███░░███  ███░░███░░███ ░░███  ███░░███ ░███ ░░░███░   ░░███ ░███  
-            ))`-^--')`,-'                   ░███    ░███████ ░███ ░░░  ░███ ░███  ░███ ░███ ░███ ░███ ░███  ░███ ░███████  ░███   ░███     ░███ ░███  
-          ,',_____,'  |                     ░███    ░███░░░  ░███  ███ ░███ ░███  ░███ ░███ ░███ ░███ ░░███ ███  ░███░░░   ░███   ░███ ███ ░███ ░███  
-          \_          `).                   █████   ░░██████ ░░██████  ████ █████ ████ █████░░██████   ░░█████   ░░██████  █████  ░░█████  ░░███████  
-            `.      _,'  `                 ░░░░░     ░░░░░░   ░░░░░░  ░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░░     ░░░░░     ░░░░░░  ░░░░░    ░░░░░    ░░░░░███  
-            /`-._,-'      \                                                                                                                 ███ ░███                                                                                                                                                                                                                 
-                                                                                                                                            ░░██████                                                                                                                                                                                         
-                                                                                                                                             ░░░░░░                                                                                                                                                                             
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                
-
-
-```
-
-### Flowchart Diagram
+### Flowchart Diagram (Simplified)
 
 ```mermaid
 ---
@@ -197,6 +173,25 @@ classDiagram
     }
 ```
 
+I extended the original models to include a more scalable architecture using the following [design patterns](https://en.wikipedia.org/wiki/Design_Patterns):
+
+- [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern): the App class implements this pattern to restrict the creation of more than one instance in our application. This is the main entry point in the application flow, and handles more of the errors and recovery states of the program flow.
+- **Factory:** _due to JavaScript limitations for creating abstract classes and interfaces, the implementation of classical OO factory patterns are usually achieved by using [functional patterns](https://www.javascripttutorial.net/javascript-factory-functions/)_. However, a mixed implementation between the [Abstract factory pattern](https://en.wikipedia.org/wiki/Abstract_factory_pattern) and [Factory method pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) was used to achieve flexibility in the design and allow the creation of model classes using 3 different approaches:
+
+```js
+  ///
+  // Examples of different ways to initialise employees/manager/engineer/intern.
+  // ------------------------------------------------------------------------------
+  // - With constructor:
+  // const employee = new Employee(...data);
+  // - With factory method:
+  // const employee = Employee.createEmployee(...data);
+  // - With factory abstract class method: (the one used here)
+  // const employee = EmployeeFactory.createEmployee("manager", ...data);
+```
+
+- [Composite](https://en.wikipedia.org/wiki/Composite_pattern): used for the container classes that store multiple instances of the model object, and allowing to create and control higher level data structures like: **team of employees**, and **list of teams**. By adding these structures, it also required to extend the test suite to check the correct integration of the data structures and ensure that the desired access restrictions to the data would be accomplished.
+
 ### Sequence Diagram
 
 ```mermaid
@@ -268,6 +263,60 @@ sequenceDiagram
     deactivate User
 ```
 
+### UX/UI Design
+
+A definition of colors and output message formatting were created in an specific CLI module with different utilities and helper functions.
+
+#### Terminal Theming
+
+##### Terminal Text Art Intro
+
+_This cover intro was created but still not implemented in v1.0._
+
+```text
+ ███████████                                       ███████████                        ██████   ███  ████                █████████                                                    █████                      
+░█░░░███░░░█                                      ░░███░░░░░███                      ███░░███ ░░░  ░░███               ███░░░░░███                                                  ░░███                       
+░   ░███  ░   ██████   ██████   █████████████      ░███    ░███ ████████   ██████   ░███ ░░░  ████  ░███   ██████     ███     ░░░   ██████  ████████    ██████  ████████   ██████   ███████    ██████  ████████ 
+    ░███     ███░░███ ░░░░░███ ░░███░░███░░███     ░██████████ ░░███░░███ ███░░███ ███████   ░░███  ░███  ███░░███   ░███          ███░░███░░███░░███  ███░░███░░███░░███ ░░░░░███ ░░░███░    ███░░███░░███░░███
+    ░███    ░███████   ███████  ░███ ░███ ░███     ░███░░░░░░   ░███ ░░░ ░███ ░███░░░███░     ░███  ░███ ░███████    ░███    █████░███████  ░███ ░███ ░███████  ░███ ░░░   ███████   ░███    ░███ ░███ ░███ ░░░ 
+    ░███    ░███░░░   ███░░███  ░███ ░███ ░███     ░███         ░███     ░███ ░███  ░███      ░███  ░███ ░███░░░     ░░███  ░░███ ░███░░░   ░███ ░███ ░███░░░   ░███      ███░░███   ░███ ███░███ ░███ ░███     
+    █████   ░░██████ ░░████████ █████░███ █████    █████        █████    ░░██████   █████     █████ █████░░██████     ░░█████████ ░░██████  ████ █████░░██████  █████    ░░████████  ░░█████ ░░██████  █████    
+   ░░░░░     ░░░░░░   ░░░░░░░░ ░░░░░ ░░░ ░░░░░    ░░░░░        ░░░░░      ░░░░░░   ░░░░░     ░░░░░ ░░░░░  ░░░░░░       ░░░░░░░░░   ░░░░░░  ░░░░ ░░░░░  ░░░░░░  ░░░░░      ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░     
+                                                                                                                                                                                                                
+                                                                                                                                                                                                                
+                                                                                                                                                                                                                
+              ,  ,                                                           █████                
+             / \/ \,'| _                                                    ░░███                
+            ,'    '  ,' |,|                                                  ░███████  █████ ████
+           ,'           ' |,'|                                               ░███░░███░░███ ░███ 
+          ,'                 ;'| _                                           ░███ ░███ ░███ ░███ 
+         ,'                    '' |                                          ░███ ░███ ░███ ░███ 
+        ,'                        ;-,                                        ████████  ░░███████ 
+       (___                        /                                        ░░░░░░░░    ░░░░░███ 
+     ,'    `.  ___               ,'                                                     ███ ░███ 
+    :       ,`'   `-.           /                                                      ░░██████  
+    |-._ o /         \         /                                                        ░░░░░░   
+   (    `-(           )       /
+  ,'`.     \      o  /      ,'
+ /    `     `.     ,'      /
+(             `"""'       /              ███████████                   █████                                               ████   █████               
+ `._                     /              ░█░░░███░░░█                  ░░███                                               ░░███  ░░███                
+    `--.______        '"`.              ░   ░███  ░   ██████   ██████  ░███████   ████████    ██████  █████ █████  ██████  ░███  ███████   █████ ████ 
+       \__,__,`---._   '`;                  ░███     ███░░███ ███░░███ ░███░░███ ░░███░░███  ███░░███░░███ ░░███  ███░░███ ░███ ░░░███░   ░░███ ░███  
+            ))`-^--')`,-'                   ░███    ░███████ ░███ ░░░  ░███ ░███  ░███ ░███ ░███ ░███ ░███  ░███ ░███████  ░███   ░███     ░███ ░███  
+          ,',_____,'  |                     ░███    ░███░░░  ░███  ███ ░███ ░███  ░███ ░███ ░███ ░███ ░░███ ███  ░███░░░   ░███   ░███ ███ ░███ ░███  
+          \_          `).                   █████   ░░██████ ░░██████  ████ █████ ████ █████░░██████   ░░█████   ░░██████  █████  ░░█████  ░░███████  
+            `.      _,'  `                 ░░░░░     ░░░░░░   ░░░░░░  ░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░░     ░░░░░     ░░░░░░  ░░░░░    ░░░░░    ░░░░░███  
+            /`-._,-'      \                                                                                                                 ███ ░███                                                                                                                                                                                                                 
+                                                                                                                                            ░░██████                                                                                                                                                                                         
+                                                                                                                                             ░░░░░░                                                                                                                                                                             
+
+```
+
+#### Team Profile Page
+
+### Test Coverage
+
 ### What I learned
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
@@ -290,32 +339,22 @@ const proudOfThisFunc = () => {
 };
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
 ### Continued development
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
 ## Author
-  Your Name
-- Website - [your name or website url](https://www.your-site.com)
-- GitHub - [your GitHub username](https://github.com/yourusername)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+  Daniel Rodriguez
+
+- Website - [Technovelty.co](https://technovelty.co/)
+- GitHub - [Technovelty](https://github.com/technoveltyco)
 
 ## Acknowledgments
 
 This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
