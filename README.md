@@ -1,6 +1,26 @@
 # Test-Driven Development: Team Profile Generator
 
-A Node.js CLI application that will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person, following Agile methodology and TDD development process
+A Node.js CLI application that will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person, following Agile methodology and TDD development process.
+
+<!-- project repository shields -->
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/technoveltyco/bootcamp-week12-challenge" />
+  <img src="https://img.shields.io/github/languages/top/technoveltyco/bootcamp-week12-challenge" />
+  <img src="https://img.shields.io/github/issues/technoveltyco/bootcamp-week12-challenge" />
+  <img src="https://img.shields.io/github/last-commit/technoveltyco/bootcamp-week12-challenge" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-orange" />
+  <img src="https://img.shields.io/badge/CSS3-blue" />
+  <img src="https://img.shields.io/badge/Javascript-yellow" />
+  <img src="https://img.shields.io/badge/Node.js-green" />
+  <img src="https://img.shields.io/badge/Inquirer-red" />
+  <img src="https://img.shields.io/badge/Jest-darkgreen" />
+  <img src="https://img.shields.io/badge/Chalk-gray" />
+  <img src="https://img.shields.io/badge/Mermaid-purple" />
+</p>
+<!-- end project repository shields -->
 
 ## Table of contents
 
@@ -8,6 +28,7 @@ A Node.js CLI application that will take in information about employees on a sof
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
+      - [Getting Started](#getting-started)
     - [Walkthough \& Screenshots](#walkthough--screenshots)
     - [Links](#links)
   - [My process](#my-process)
@@ -34,19 +55,29 @@ In this Challenge, you'll create an application that generates HTML files using 
 
 Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generate an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
 
+#### Getting Started
+
+Your application should use JestLinks to an external site. for running unit tests and InquirerLinks to an external site. for collecting input from the user. The application will be invoked by using the following command:
+
+```node
+node index.js
+```
+
 ### Walkthough & Screenshots
 
 ![Walkthrough video of Team Profile Generator]()
 
 _Click on each screenshot to take you to the Walkthrough video, a Team Profile's live example, and an example in PDF version._
 
-[![The terminal intro screen of Team Profile Generator (not implemented yet)](./docs/assets/img/Terminal-Intro-Screenshot%202023-02-26%20211435.png)]()
+![The terminal intro screen of Team Profile Generator (not implemented yet)](./docs/assets/img/Terminal-Intro-Screenshot%202023-02-26%20211435.png)
 
 [![Example of a generated Team Profile webpage on large screens](./docs/assets/img/Screenshot%202023-03-02%20at%2011-24-22%20My%20Team.png)](https://technoveltyco.github.io/bootcamp-week12-challenge/)
 
-[![Example of a generated Team Profile webpage on small screens](./docs/assets/img/Screenshot%202023-03-02%20113146.png)
+![Example of a generated Team Profile webpage on small screens](./docs/assets/img/Screenshot%202023-03-02%20113146.png)
 
 [![Example of a printer-friendly version of the Team Profile webpage](./docs/assets/img/Screenshot%202023-03-02%20112554.png)](https://technoveltyco.github.io/bootcamp-week12-challenge/output/My%20Team.pdf)
+
+![Example of all running tests passed](./docs/assets/img/Screenshot%202023-03-02%20141940.png)
 
 ### Links
 
@@ -56,7 +87,7 @@ _Click on each screenshot to take you to the Walkthrough video, a Team Profile's
 
 ## My process
 
-I started designing the structure of the program by creating a [Flowchart Diagram](#flowchart-diagram-simplified), [Class Diagram](#class-diagram) and [Sequence Diagram](#sequence-diagram) to have a clearer idea of logic structure, modules and reference for automated tests coverage. FInally, I went through ideas and investigation to the [UX/UI Design](#uxui-design) starting from the terminal theming, and following with the webpage design for visualisation in screens and printer-friendly version.
+I started designing the structure of the program by creating a [Flowchart Diagram](#flowchart-diagram-simplified), [Class Diagram](#class-diagram) and [Sequence Diagram](#sequence-diagram), so I could have a reference of the logic structure, modules and overall idea of the automated tests coverage required. Finally, I went through the ideas and doing investigation for the [UX/UI Design](#uxui-design), starting from the terminal theming, and following with the webpage design creating a visualisation on screens and a printer-friendly version.
 
 ### Built with
 
@@ -265,9 +296,30 @@ sequenceDiagram
 
 ### UX/UI Design
 
-A definition of colors and output message formatting were created in an specific CLI module with different utilities and helper functions.
+A definition of colors and formatting of the output were created in a specific [CLI module](https://github.com/technoveltyco/bootcamp-week12-challenge/blob/main/src/utils/cli-theme.mjs) providing different utilities and helper functions.
 
 #### Terminal Theming
+
+| Emoji | Text Color | Background Color | Text decoration | Behaviour      | Terminal UI |
+|-------|------------|------------------|-----------------|----------------|-------------|
+| ✔️    | `#008000`  | `#000000`        | --              | Success        | --          |
+| ✔️    | `#000000`  | `#00ffff`        | --              | Done           | --          |
+| ⚠️    | `#ffa500`  | `#000000`        | --              | Warning        | --          |
+| --    | `#ffa500`  | `#000000`        | --              | Fail validate   | --          |
+| ⚠️    | `#000000`  | `#00ffff`        | --              | Info           | Bottom Bar  |
+| ❌    | `#ff0000`  | `#000000`        | --              | Fatal Error    | Bottom Bar  |
+| 📂    | `#ffffff`  | `#000000`        | --              | Created        | --          |
+| 🙏    | `#ffffff`  | `#000000`        | --              | Thanks         | --           |
+| --    | `#ffffff`  | `#000000`        | **Bold**        | Label          | --           |
+| --    | `#000000`  | `#00ffff`        | --              | Highlight      | --           |
+|       | `#000000`  | `#00ffff`        | --              | Notify         | Bottom Bar   |
+| 📛    | `#ffffff`  | `#000000`        | **Bold**        | Name Input Label | --           |
+| 🆔    | `#ffffff`  | `#000000`        | **Bold**        | ID Input Label | --           |
+| 📧    | `#ffffff`  | `#000000`        | **Bold**        | Email Input Label | --           |
+| 🏢    | `#ffffff`  | `#000000`        | **Bold**        | Office Number Input Label | --           |
+| 💻    | `#ffffff`  | `#000000`        | **Bold**        | GitHub Account Input Label | --           |
+| 🏫    | `#ffffff`  | `#000000`        | **Bold**        | School Input Label | --           |
+| --    | `#ffffff`  | `#000000`        | --              | Default text       | --          |
 
 ##### Terminal Text Art Intro
 
@@ -315,7 +367,18 @@ _This cover intro was created but still not implemented in v1.0._
 
 #### Team Profile Page
 
+The theming was inpired in the idea of practising UI design shapes using CSS effects and vectorised images in SVG format. In addition for usability considerations, a printer-friendly theme was created too.
+
+To look at the sample of a generated Team Profile follow the links below:
+
+- [HTML format](https://technoveltyco.github.io/bootcamp-week12-challenge/)
+- [PDF format](https://technoveltyco.github.io/bootcamp-week12-challenge/output/My%20Team.pdf) (printer-friendly version)
+
 ### Test Coverage
+
+Tests were created for all the models implemented in the diagram of classes, covering ~100% of the code.
+
+You can run the tests from the project root folder using `npm run test`.
 
 ### What I learned
 

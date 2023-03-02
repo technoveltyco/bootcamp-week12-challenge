@@ -217,7 +217,7 @@ async function init() {
         cli.success("✔️ Your files are ready at:") +
           `\n 📂 ${cli.label("HTML format:")} ${htmlFilePath}` +
           `\n 📂 ${cli.label("ZIP format:")} ${zipFilePath}` +
-          cli.success("\n\n🙏 Thanks for using our tool!.")
+          "\n\n🙏 Thanks for using our tool!."
       );
     }
   } catch (error) {
