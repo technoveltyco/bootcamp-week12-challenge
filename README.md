@@ -71,7 +71,8 @@ node index.mjs
 
 _Click on each screenshot to take you to the Walkthrough video, a Team Profile's live example, and an example in PDF version._
 
-![Walkthrough video of Team Profile Generator](https://user-images.githubusercontent.com/2573750/222523833-77af7fda-d324-4848-b360-2ecda53db25e.mp4)
+**Walkthrough Video**
+https://user-images.githubusercontent.com/2573750/222523833-77af7fda-d324-4848-b360-2ecda53db25e.mp4
 
 [![Example of a generated Team Profile webpage on large screens](./docs/assets/img/Screenshot%202023-03-02%20at%2011-24-22%20My%20Team.png)](https://technoveltyco.github.io/bootcamp-week12-challenge/)
 
